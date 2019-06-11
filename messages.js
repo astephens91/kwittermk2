@@ -1,22 +1,33 @@
-import {GET_MESSAGES, GET_MESSAGES_SUCCESS, GET_MESSAGES_FAIL} from "../actions"
+import { domain, jsonHeaders, handleJsonResponse } from "./constants";
 
-const initialState = {
-  messages: {messages:[]}
+// action types
+export const GET_MESSAGES = "GET_MESSAGES";
+export const GET_MESSAGES_SUCCESS = "GET_MESSAGES_SUCCESS";
+export const GET_MESSAGES_FAIL = "GET_MESSAGES_FAIL";
+
+const url = domain + "/messages";
+
+// action creators
+export const getMessages = () => dispatch => {
+  dispatch({
+    type: GET_MESSAGES
+  });
+
+  return fetch(url, {
+    method: "GET",
+    headers: jsonHeaders
+  })
+    .then(handleJsonResponse)
+    .then(result => {
+      return dispatch({
+        type: GET_MESSAGES_SUCCESS,
+        payload: result
+      });
+    })
+    .catch(err => {
+      return Promise.reject(
+        dispatch({ type: GET_MESSAGES_FAIL, payload: err.message })
+      );
+    });
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case GET_MESSAGES:
-      return {
-        ...state,
-        messageLoading: true,
-        messageError: null
-      };
-    case GET_MESSAGES_SUCCESS:
-      return { ...state, messages: action.payload, messageLoading: false };
-    case GET_MESSAGES_FAIL:
-      return { ...state, messageError: action.payload, messageLoading: false };
-    default:
-      return state;
-  }
-};
