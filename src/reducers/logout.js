@@ -4,7 +4,7 @@ const LogoutReducer = (state = initialState, action) => {
   switch (action.type) {
     
 case LOGOUT:
-   return state;
+   return {...state};
   case LOGOUT_SUCCESS:
    return {
     ...state,
