@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUserProfile } from "../actions";
-// import Navbar from "./Navbar";
+import Navbar from "./Navbar";
 
 class UserProfile extends Component {
   componentDidMount() {
@@ -10,6 +10,7 @@ class UserProfile extends Component {
   render() {
     return (
       <React.Fragment>
+          <Navbar />
         <p>This is the user profile</p>
         <p>Username: {this.props.user.username}</p>
         <p>Display Name: {this.props.user.displayName}</p>
@@ -24,7 +25,7 @@ class UserProfile extends Component {
           return (
             <React.Fragment>
           <p>{message.userId}</p>
-          <p>{message.createdAt}</p>
+          <p>{new Date(message.createdAt).toDateString()}</p>
           <p>{message.text}</p>
           <p>Number of likes: {message.likes.length}</p>
           {/* <button>Like/Unlike</button> */}
@@ -32,7 +33,6 @@ class UserProfile extends Component {
           );
         })};
         
-        {/* <Navbar /> */}
       </React.Fragment>
     );
   }

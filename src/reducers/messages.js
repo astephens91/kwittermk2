@@ -12,13 +12,12 @@ import {
 
 const initialState = {
   getMessagesLoading: false,
-  messages: null,
+  messages: [],
   getMessagesError: null,
   getUserMessagesLoading: false,
   userMessages: [],
   getUserMessagesError: null,
   getKweetLoading: false,
-  kweet: null,
   getKweetError: null
 };
 
@@ -67,7 +66,10 @@ export default (state = initialState, action) => {
     case CREATE_KWEET_SUCCESS:
       return {
         ...state,
-        kweet: action.payload.kweet,
+        messages: [
+          action.payload.message,
+          ...state.message
+        ],
         getKweetLoading: false
       };
     case CREATE_KWEET_FAIL:

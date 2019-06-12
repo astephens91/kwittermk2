@@ -29,7 +29,7 @@ class LoginForm extends Component {
 
         <Segment placeholder>
           <Divider vertical>Or</Divider>
-          <Grid columns={2} stackable textAlign="centered">
+          <Grid columns={2} stackable textAlign="center">
             <Grid.Column style={{ maxWidth: 350 }}>
               <Image src={logo} alt="" />
               <Form
