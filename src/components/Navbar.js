@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import { Menu, Button } from "semantic-ui-react";
 import {Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutThenGoToLogin as logout } from "../actions";
+import logo from "../img/birdlogo.png";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
+  handleLogout = () => {
+    // this handles the logout
+  };
+
   render() {
+  
 
     return (
       <React.Fragment>
@@ -15,11 +23,11 @@ export default class Navbar extends Component {
             <React.Fragment>
               <Link to="/home">
                 <Menu.Item>
-                  Kwitter{/* Logo Thumbnail goes here */}
+                  <Image src={logo} alt="" style={{ width: "50px" }} />
                 </Menu.Item>
               </Link>
               <Link to="/profile">
-                 <Menu.Item>
+                 <Menu.Item style = {{height: "100%"}}>
                    
                      Profile
                    
@@ -30,6 +38,7 @@ export default class Navbar extends Component {
                 <Menu.Item>
                   <Button style={{ backgroundColor: "#ff0000", color: "white"}}
                   /*Logout handler will go here */
+                  onClick={this.handleLogout}
                   >
                     Logout
                   </Button>
@@ -42,5 +51,11 @@ export default class Navbar extends Component {
 
   
     }};
+    export default connect(
+      ({ auth }) => ({
+        login: auth.login,
+      }),
+      { logout }
+    )(Navbar);
 
 

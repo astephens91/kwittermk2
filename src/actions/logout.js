@@ -27,3 +27,7 @@ export const logout = () => dispatch => {
       });
   };
   
+  export const logoutThenGoToLogin = logoutData => dispatch => {
+    dispatch(push("/"));
+    return dispatch(logout(logoutData));
+  };;
