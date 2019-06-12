@@ -21,17 +21,12 @@ class LoginForm extends Component {
     const { isLoading, err } = this.props;
     return (
       <React.Fragment>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         <Segment placeholder>
           <Divider vertical>Or</Divider>
           <Grid columns={2} stackable textAlign="centered">
