@@ -11,8 +11,8 @@ class Navbar extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   handleLogout = () => {
-    // this handles the logout
-  };
+    this.props.logout();
+  }
 
   render() {
   
@@ -48,14 +48,15 @@ class Navbar extends Component {
           </Menu>
           </React.Fragment>
         ) 
-
   
     }};
+    const mapDispatchToProps = {
+      logout
+  }
     export default connect(
       ({ auth }) => ({
         login: auth.login,
       }),
-      { logout }
+      mapDispatchToProps
     )(Navbar);
-
 
