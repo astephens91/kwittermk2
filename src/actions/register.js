@@ -1,6 +1,8 @@
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
 import { push } from "connected-react-router";
 
+// Grab GET /messages, GET /users/{userID}/picture
+
 export const REGISTER = "REGISTER";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";

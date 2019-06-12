@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Menu, Button, Image } from "semantic-ui-react";
+import { Menu, Button } from "semantic-ui-react";
 import {Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 export default class Navbar extends Component {
   state = { activeItem: "home" };
@@ -9,7 +8,6 @@ export default class Navbar extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem } = this.state;
 
     return (
       <React.Fragment>
