@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Button } from "semantic-ui-react";
+import { Menu, Button, Image } from "semantic-ui-react";
 import {Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutThenGoToLogin as logout } from "../actions";
@@ -11,8 +11,8 @@ class Navbar extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   handleLogout = () => {
-    // this handles the logout
-  };
+    this.props.logout();
+  }
 
   render() {
   
@@ -48,14 +48,15 @@ class Navbar extends Component {
           </Menu>
           </React.Fragment>
         ) 
-
   
     }};
+    const mapDispatchToProps = {
+      logout
+  }
     export default connect(
       ({ auth }) => ({
         login: auth.login,
       }),
-      { logout }
+      mapDispatchToProps
     )(Navbar);
-
 
