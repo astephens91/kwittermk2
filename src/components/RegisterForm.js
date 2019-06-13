@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { registerThenGoToUserProfile as register } from "../actions";
+import { registerThenGoToUpdateUser as register } from "../actions/register";
 import { Form, Grid } from "semantic-ui-react";
 import Spinner from "react-spinkit";
 
