@@ -3,11 +3,11 @@ import { Grid } from "semantic-ui-react";
 import Navbar from "./Navbar";
 import WriteKweet from "./WriteKweet"
 
+
 export class HomePage extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* This is where the Navbar will go */}
         <Navbar />
         <Grid container stackable>
           <Grid.Row columns={2} style={{ marginTop: "80px" }}>

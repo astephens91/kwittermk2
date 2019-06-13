@@ -18,3 +18,10 @@ code {
 .login {
   text-align: center;
 }
+
+.birdlogo {
+  float: left;
+  width: 100px;
+  height: 125px;
+
+}

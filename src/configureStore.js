@@ -20,5 +20,11 @@ export default function configureStore(preloadedState) {
     )
   );
 
+  store.subscribe(() => {
+    localStorage.setItem("auth", JSON.stringify(store.getState()
+    .auth))
+  });
+
+
   return store;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, TextArea, Button } from "semantic-ui-react";
+import { Container, Form, TextArea, Button } from "semantic-ui-react";
 import { handleCreateKweet } from "../actions";
 import { connect } from "react-redux";
 
@@ -9,7 +9,7 @@ class WriteKweet extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleCreateKweet(this.state.kweet)
+    this.props.handleCreateKweet(this.state.kweet);
   };
 
   handleChange = e => {
@@ -21,27 +21,28 @@ class WriteKweet extends Component {
     const { handleSubmit, handleChange } = this;
     const { kweet } = this.state;
     return (
-      <Form onSubmit={handleSubmit}>
-        <Form.Field
-          name="kweet"
-          onChange={handleChange}
-          id="form-textarea-control-opinion"
-          control={TextArea}
-          placeholder="Write Kweet..."
-          value={kweet}
-        />
-        <Form.Field
-          id="form-button-control-public"
-          control={Button}
-          content="Submit"
-        />
-      </Form>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Form.Field
+            name="kweet"
+            onChange={handleChange}
+            id="form-textarea-control-opinion"
+            control={TextArea}
+            placeholder="Write Kweet..."
+            value={kweet}
+          />
+          <Form.Field
+            id="form-button-control-public"
+            control={Button}
+            content="Submit"
+          />
+        </Form>
+      </Container>
     );
   }
 }
 
 export default connect(
-      null
-    ,
-    { handleCreateKweet }
-  )(WriteKweet);
+  null,
+  { handleCreateKweet }
+)(WriteKweet);

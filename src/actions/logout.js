@@ -4,7 +4,7 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 
 const kwitterURL = "https://kwitter-api.herokuapp.com";
-export const logout = () => dispatch => {
+const logout = () => dispatch => {
     console.log('is this running')
     fetch(`${kwitterURL}/auth/logout`)
       .then(response => {
@@ -27,3 +27,15 @@ export const logout = () => dispatch => {
       });
   };
   
+  export const logoutThenGoToLogin = () => dispatch => {
+    dispatch(push("/"));
+    return dispatch(logout());
+  };;
+
+  // fetch(url + "/logout", {
+  //   method: "GET",
+  //   headers: {
+  //     Authorization: "Bearer" + token
+  //   },
+  //   body: JSON.stringify(logoutData)
+  // })
