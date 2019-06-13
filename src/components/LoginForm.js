@@ -34,7 +34,7 @@ class LoginForm extends Component {
         <br />
         <Segment placeholder>
           <Divider vertical>Or</Divider>
-          <Image size="small" src={logo} alt="" />
+          <Image className="birdLogo" size="small" src={logo} alt="" />
           <Grid columns={2} stackable textAlign="center">
             <Grid.Column style={{ maxWidth: 350 }}>
               <Form
@@ -50,7 +50,7 @@ class LoginForm extends Component {
                   name="username"
                   icon="user"
                   iconPosition="left"
-                  placeholder="Username/E-Mail"
+                  placeholder="Username"
                   autoFocus
                   required
                   onChange={this.handleChange}
