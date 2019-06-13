@@ -50,7 +50,7 @@ class LoginForm extends Component {
                   name="username"
                   icon="user"
                   iconPosition="left"
-                  placeholder="Username/E-Mail"
+                  placeholder="Username"
                   autoFocus
                   required
                   onChange={this.handleChange}
