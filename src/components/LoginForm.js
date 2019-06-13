@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginThenGoToUserProfile as login } from "../actions";
-import { Form, Grid, Divider, Segment, Image } from "semantic-ui-react";
+import { Divider, Form, Grid, Image, Segment } from "semantic-ui-react";
 import Spinner from "react-spinkit";
 import logo from "../img/birdlogo.png";
 
@@ -26,12 +26,17 @@ class LoginForm extends Component {
         <br />
         <br />
         <br />
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <Segment placeholder>
           <Divider vertical>Or</Divider>
+          <Image size="small" src={logo} alt="" />
           <Grid columns={2} stackable textAlign="center">
             <Grid.Column style={{ maxWidth: 350 }}>
-              <Image src={logo} alt="" />
               <Form
                 className="loginForm"
                 size="large"
