@@ -9,7 +9,13 @@ class WriteKweet extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleCreateKweet(this.state.kweet);
+    if (e.key === "Enter") {
+      this.props.handleCreateKweet(this.state.kweet);
+      this.setState({ kweet: "" });
+    } else {
+      this.props.handleCreateKweet(this.state.kweet);
+      this.setState({ kweet: "" });
+    }
   };
 
   handleChange = e => {
@@ -21,6 +27,7 @@ class WriteKweet extends Component {
     const { handleSubmit, handleChange } = this;
     const { kweet } = this.state;
     return (
+      <React.Fragment>
       <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Field
@@ -38,11 +45,26 @@ class WriteKweet extends Component {
           />
         </Form>
       </Container>
+      </React.Fragment>
     );
   }
 }
 
+function mapStateToProps(state){
+  return {
+    userID: state.userID
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleCreateKweet: kweet => {
+      dispatch(handleCreateKweet(kweet))
+    }
+  }
+}
+
 export default connect(
-  null,
-  { handleCreateKweet }
+  mapStateToProps,
+  mapDispatchToProps
 )(WriteKweet);
