@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Card, Feed, Icon } from "semantic-ui-react";
 import { getUserProfile } from "../actions";
 import Navbar from "./Navbar";
+import UpdateProfileModal from "./UpdateProfileModal"
 
 class UserProfile extends Component {
   componentDidMount() {
@@ -12,7 +13,8 @@ class UserProfile extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <Card>
+        <Card style={{margin: "auto"}}>
+        <UpdateProfileModal />
         <Feed>
           <Feed.Label>
             <Feed.Summary>
