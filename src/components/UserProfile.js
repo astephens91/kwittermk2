@@ -17,18 +17,18 @@ class UserProfile extends Component {
           <Feed.Label>
             <Feed.Summary>
               <h1>This is the user profile</h1>
-              <Feed.User>Username: {this.props.user.username}</Feed.User>
+              <Feed.User>Name {this.props.user.username}</Feed.User>
               <br></br>
               <Feed.User>Display Name: {this.props.user.displayName}</Feed.User>
               <p>About: {this.props.user.about}</p>
               <p>
-                Account Created:{" "}
+                Joined{" "}
                 {new Date(this.props.user.createdAt).toDateString()}
               </p>
-              <p>
-                Last Updated:{" "}
+              {/* <p>
+                Last Online{" "}
                 {new Date(this.props.user.updatedAt).toDateString()}
-              </p>
+              </p> */}
             </Feed.Summary>
           </Feed.Label>
         </Feed>
@@ -38,9 +38,9 @@ class UserProfile extends Component {
               <Feed>
                 <Feed.Label>
                   <Feed.Summary>
-              <p>{message.userId}</p>
+              {/* <p>{message.userId}</p> */}
               <Feed.Date>{new Date(message.createdAt).toDateString()}</Feed.Date>
-              <h2>{message.text}</h2>
+              <h3>{message.text}</h3>
               <Feed.Like>
               <Icon name="like">{message.likes.length}</Icon>
               </Feed.Like>
