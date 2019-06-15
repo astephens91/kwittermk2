@@ -1,7 +1,6 @@
-import { domain, handleJsonResponse, jsonHeaders } from "./constants";
+import { domain } from "./constants";
 import { getLoggedInUsersMessages } from ".";
-import { push } from "connected-react-router";
-import users from "../reducers/users";
+
 
 export const GET_USER = "GET_USER";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";

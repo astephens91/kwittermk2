@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Card, Feed, Icon, Grid, Segment } from "semantic-ui-react";
-import ProfileCard from "../ProfileCard"
-
+import { Card, Grid, Segment } from "semantic-ui-react";
+import ProfileCard from "../ProfileCard";
 import Navbar from "../Navbar";
 import UpdateProfileModal from "../UpdateProfileModal";
 
 export default class UserProfile extends Component {
-
   render() {
     return (
       <React.Fragment>
@@ -22,9 +19,7 @@ export default class UserProfile extends Component {
               </Card>
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
-              <Segment>
-                {/* Message feed goes here */}
-              </Segment>{" "}
+              <Segment>{/* Message feed goes here */}</Segment>{" "}
             </Grid.Column>
           </Grid.Row>
         </Grid>
