@@ -8,7 +8,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  loggedInUser: {
+  user: {
     id: 0,
     username: "",
     displayName: "",
@@ -18,7 +18,6 @@ const initialState = {
     messages: []
   },
   getUserError: null,
-  user: [],
   getUserLoading: false
 };
 
@@ -31,12 +30,16 @@ export default (state = initialState, action) => {
         getUserError: null
       };
     case GET_USER_SUCCESS:
-      return {
-        ...state,
-        user: action.payload.user,
+      console.log(action.data);
+      return {...state,
         loggedInUser: action.data,
-        getUserLoading: false
-      };
+      }
+      // return {
+      //   ...state,
+      //   user: action.payload.user,
+      //   // loggedInUser: action.data,
+      //   getUserLoading: false
+      // };
     case GET_USER_FAIL:
       return {
         ...state,
@@ -48,7 +51,7 @@ export default (state = initialState, action) => {
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
-        loggedInUser: action.data
+        loggedInUser: {...state.loggedInUser, ...action.data}
       };
     case UPDATE_USER_FAIL:
       return state;

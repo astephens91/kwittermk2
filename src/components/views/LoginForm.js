@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loginThenGoToUserProfile as login } from "../actions";
+import { loginThenGoToUserProfile as login } from "../../actions";
 import { Divider, Form, Grid, Image, Segment } from "semantic-ui-react";
 import Spinner from "react-spinkit";
-import logo from "../img/birdlogo.png";
+import logo from "../../img/birdlogo.png";
 
 class LoginForm extends Component {
   state = { username: "", password: "" };

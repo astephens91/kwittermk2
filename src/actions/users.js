@@ -13,23 +13,21 @@ export const UPDATE_USER_FAIL = "UPDATE_USER_FAIL";
 const url = domain + "/users";
 
 export const getUser = userId => dispatch => {
-  dispatch({
-    type: GET_USER
-  });
-
-  return fetch(url + "/" + userId)
-    .then(handleJsonResponse)
-    .then(result => {
-      dispatch({
-        type: GET_USER_SUCCESS,
-        payload: result
-      });
+  dispatch({ type: GET_USER });
+  fetch(url + "/" + userId)
+    .then(response => {
+      if (!response.ok) {
+        response.json().then(err => {
+          throw err;
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      dispatch({ type: GET_USER_SUCCESS, data: data.user });
     })
     .catch(err => {
-      dispatch({
-        type: GET_USER_FAIL,
-        payload: err
-      });
+      dispatch({ type: GET_USER_FAIL, err });
     });
 };
 
@@ -62,13 +60,13 @@ export const updateUser = userData => (dispatch, getState) => {
   }
   dispatch({ type: UPDATE_USER });
   console.log(userDataOriginal)
-  fetch(url).then(res => res.json()).then(response => {
-    console.log(response.users)
-      const userId = response.users.filter(user => {
-          return user.username === "testuser1"
-      })
-      console.log(userId)
-  })
+//   fetch(url).then(res => res.json()).then(response => {
+//     console.log(response.users)
+//       const userId = response.users.filter(user => {
+//           return user.username === "testuser1"
+//       })
+//       console.log(userId)
+//   })
   
   fetch(url + "/" + getState().auth.login.id, {
     method: "PATCH",
