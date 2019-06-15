@@ -98,7 +98,7 @@ export const logoutThenGoToLogin = () => dispatch => {
 
 export const registerThenGoToUserProfile = registerData => dispatch => {
   return dispatch(register(registerData)).then(() =>
-    dispatch(push("/home"))
+    dispatch(push("/postreg"))
   );
 };
 
