@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
-import Navbar from "./Navbar";
-import WriteKweet from "./WriteKweet";
+import Navbar from "../Navbar";
+import WriteKweet from "../WriteKweet";
 import { connect } from "react-redux";
 
 export class HomePage extends Component {
