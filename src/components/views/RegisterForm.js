@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { registerThenGoToUserProfile as register } from "../actions";
+import { registerThenGoToUserProfile as register } from "../../actions";
 import { Form, Grid } from "semantic-ui-react";
 import Spinner from "react-spinkit";
 
@@ -26,10 +26,12 @@ class RegisterForm extends Component {
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 350 }}>
-            <Form className="registerForm" size="large">
-              <Form.Field>
+            <Form className="registerForm" 
+                  size="large" 
+                  onSubmit={this.handleRegister}>
+              
                 <h1 className="register">Register</h1>
-                <form onSubmit={this.handleRegister}>
+                
                   <label htmlFor="displayName" />
                   <Form.Input
                     type="text"
@@ -78,10 +80,10 @@ class RegisterForm extends Component {
                   >
                     Submit
                   </button>
-                </form>
+                
                 {isLoading && <Spinner name="circle" color="blue" />}
                 {err && <p style={{ color: "red" }}>{err}</p>}
-              </Form.Field>
+              
             </Form>
           </Grid.Column>
         </Grid>

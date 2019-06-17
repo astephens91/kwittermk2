@@ -1,8 +1,23 @@
-import { GET_USER, GET_USER_SUCCESS, GET_USER_FAIL } from "../actions";
+import {
+  GET_USER,
+  GET_USER_SUCCESS,
+  GET_USER_FAIL,
+  UPDATE_USER,
+  UPDATE_USER_FAIL,
+  UPDATE_USER_SUCCESS
+} from "../actions";
 
 const initialState = {
+  user: {
+    id: 0,
+    username: "",
+    displayName: "",
+    about: "",
+    createdAt: "",
+    updatedAt: "",
+    messages: []
+  },
   getUserError: null,
-  user: [],
   getUserLoading: false
 };
 
@@ -13,19 +28,34 @@ export default (state = initialState, action) => {
         ...state,
         getUserLoading: true,
         getUserError: null
-      }
+      };
     case GET_USER_SUCCESS:
-    return {
-      ...state,
-      user: action.payload.user,
-      getUserLoading: false
-    }
+      console.log(action.data);
+      return {...state,
+        loggedInUser: action.data,
+      }
+      // return {
+      //   ...state,
+      //   user: action.payload.user,
+      //   // loggedInUser: action.data,
+      //   getUserLoading: false
+      // };
     case GET_USER_FAIL:
-    return {
-      ...state,
-      getUserError: action.payload,
-      getUserLoading: false
-    }
+      return {
+        ...state,
+        getUserError: action.payload,
+        getUserLoading: false
+      };
+    case UPDATE_USER:
+      return state;
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        loggedInUser: {...state.loggedInUser, ...action.data}
+      };
+    case UPDATE_USER_FAIL:
+      return state;
+
     default:
       return state;
   }
