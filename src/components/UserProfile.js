@@ -36,7 +36,7 @@ class UserProfile extends Component {
           return (
             <React.Fragment>
               <Feed>
-                <Feed.Label>
+                <h3>
                   <Feed.Summary>
               {/* <p>{message.userId}</p> */}
               <Feed.Date>{new Date(message.createdAt).toDateString()}</Feed.Date>
@@ -46,7 +46,7 @@ class UserProfile extends Component {
               </Feed.Like>
               {/* <button>Like/Unlike</button> */}
               </Feed.Summary>
-              </Feed.Label>
+              </h3>
               </Feed>
             </React.Fragment>
           );
