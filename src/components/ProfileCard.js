@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { getLoggedInUser } from "../actions";
+import { getUser } from "../actions";
 import ImageCard from "./ImageCard";
 import moment from "moment";
 
 class ProfileCard extends Component {
   componentDidMount() {
-    this.props.getLoggedInUser();
+    this.props.getUser();
   }
 
   render() {
@@ -43,7 +43,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { getLoggedInUser: () => dispatch(getLoggedInUser()) };
+  return { getUser: () => dispatch(getUser()) };
 };
 
 export default connect(

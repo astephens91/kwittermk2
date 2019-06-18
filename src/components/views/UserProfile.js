@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Card, Grid, Segment } from "semantic-ui-react";
 import ProfileCard from "../ProfileCard";
 import Navbar from "../Navbar";
+import ProfileFeedContainer from "../ProfileFeedContainer";
+import DeleteUser from "../DeleteUser"
 // import UpdateProfileModal from "../UpdateProfileModal";
 
 export default class UserProfile extends Component {
@@ -16,10 +18,13 @@ export default class UserProfile extends Component {
               <ProfileCard />
               <Card style={{ margin: "auto", marginTop: "50px" }}>
                 {/* This is where profile pictures will go */}
+                <DeleteUser />
               </Card>
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
-              <Segment>{/* Message feed goes here */}</Segment>{" "}
+              <Segment>
+                <ProfileFeedContainer />
+              </Segment>{" "}
             </Grid.Column>
           </Grid.Row>
         </Grid>

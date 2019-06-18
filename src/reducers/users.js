@@ -4,7 +4,10 @@ import {
   GET_USER_FAIL,
   UPDATE_USER,
   UPDATE_USER_FAIL,
-  UPDATE_USER_SUCCESS
+  UPDATE_USER_SUCCESS,
+  DELETE_USER,
+  DELETE_USER_FAIL,
+  DELETE_USER_SUCCESS
 } from "../actions";
 
 const initialState = {
@@ -32,7 +35,7 @@ export default (state = initialState, action) => {
     case GET_USER_SUCCESS:
       console.log(action.data);
       return {...state,
-        loggedInUser: action.data,
+        user: action.data,
       }
       // return {
       //   ...state,
@@ -54,6 +57,16 @@ export default (state = initialState, action) => {
         loggedInUser: {...state.loggedInUser, ...action.data}
       };
     case UPDATE_USER_FAIL:
+      return state;
+
+    case DELETE_USER:
+      return state;
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        loggedInUser: {...state.loggedInUser}
+      }
+    case DELETE_USER_FAIL:
       return state;
 
     default:
