@@ -4,7 +4,7 @@ import ProfileCard from "../ProfileCard";
 import Navbar from "../Navbar";
 // import UpdateProfileModal from "../UpdateProfileModal";
 import DeleteUser from "../DeleteUser";
-import ProfileFeed from "../ProfileFeed";
+import ProfileFeedContainer from "../ProfileFeedContainer";
 
 export default class UserProfile extends Component {
   render() {
@@ -23,7 +23,7 @@ export default class UserProfile extends Component {
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
               <Segment>
-                <ProfileFeed />
+                <ProfileFeedContainer />
               </Segment>{" "}
             </Grid.Column>
           </Grid.Row>

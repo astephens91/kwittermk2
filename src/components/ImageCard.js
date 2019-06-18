@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { getLoggedInUser } from "../actions";
+import { getUser } from "../actions";
 import UserImage from "./UserImage";
 
 class ImageCard extends Component {
   componentDidMount() {
-    this.props.getLoggedInUser();
+    this.props.getUser();
   }
   render() {
     return (
@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { getLoggedInUser: () => dispatch(getLoggedInUser()) };
+  return { getUser: () => dispatch(getUser()) };
 };
 
 export default connect(

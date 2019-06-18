@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Feed, Icon } from "semantic-ui-react";
-import { getUserProfile } from "../actions";
+import { getUserProfile, toggleLike } from "../actions";
 import Navbar from "./Navbar";
 
 class UserProfile extends Component {
@@ -44,7 +44,9 @@ class UserProfile extends Component {
               <Feed.Like>
               <Icon name="like">{message.likes.length}</Icon>
               </Feed.Like>
-              {/* <button>Like/Unlike</button> */}
+              <button onClick={(event) => this.props.handleToggleLike(message.id)}>
+              Like/Unlike
+              </button>
               </Feed.Summary>
               </h3>
               </Feed>
@@ -65,7 +67,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getUserProfile
+  getUserProfile,
+  toggleLike
 };
 export default connect(
   mapStateToProps,
