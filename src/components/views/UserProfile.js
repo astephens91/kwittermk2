@@ -5,8 +5,7 @@ import Navbar from "../Navbar";
 import UpdateProfileModal from "../UpdateProfileModal";
 import DeleteUser from "../DeleteUser";
 import ProfileFeedContainer from "../ProfileFeedContainer";
-import DeleteUser from "../DeleteUser"
-// import UpdateProfileModal from "../UpdateProfileModal";
+
 
 export default class UserProfile extends Component {
   
