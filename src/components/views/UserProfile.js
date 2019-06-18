@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, Grid, Segment } from "semantic-ui-react";
 import ProfileCard from "../ProfileCard";
 import Navbar from "../Navbar";
-import UpdateProfileModal from "../UpdateProfileModal";
+// import UpdateProfileModal from "../UpdateProfileModal";
 
 export default class UserProfile extends Component {
   render() {
