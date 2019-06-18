@@ -39,7 +39,7 @@ export const getUser = () => (dispatch, getState) => {
 
 export const updateUser = userData => (dispatch, getState) => {
   const token = getState().auth.login.token;
-  let userDataOriginal = userData;
+  
   if (userData.displayName === "") {
     delete userData.displayName;
   }
@@ -65,7 +65,7 @@ export const updateUser = userData => (dispatch, getState) => {
     delete userData.about;
   }
   dispatch({ type: UPDATE_USER });
-  console.log(userDataOriginal)
+
 //   fetch(url).then(res => res.json()).then(response => {
 //     console.log(response.users)
 //       const userId = response.users.filter(user => {
@@ -91,8 +91,9 @@ export const updateUser = userData => (dispatch, getState) => {
     })
     .then(data => {
       console.log(data.user)
-      dispatch({ type: UPDATE_USER_SUCCESS, data: data.user });
-    //   dispatch(push("/profile"));
+      dispatch({ type: UPDATE_USER_SUCCESS, data: data.user })
+      window.location.reload();;
+      
     })
     .catch(err => {
       dispatch({ type: UPDATE_USER_FAIL, err });
