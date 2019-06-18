@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUserProfile } from "../actions";
+import { Feed } from "."
 
-class ProfileFeed extends Component {
+class ProfileFeedContainer extends Component {
   componentDidMount() {
     this.props.getUserProfile()
   }
@@ -19,17 +20,7 @@ class ProfileFeed extends Component {
         <p>
           Last Updated: {new Date(this.props.user.updatedAt).toDateString()}
         </p>
-        {this.props.messages.map(message => {
-          return (
-            <React.Fragment>
-          <p>{message.userId}</p>
-          <p>{message.createdAt}</p>
-          <p>{message.text}</p>
-          <p>Number of likes: {message.likes.length}</p>
-          {/* <button>Like/Unlike</button> */}
-          </React.Fragment>
-          );
-        })};
+        <Feed messages = {this.props.messages} />
         
         {/* <Navbar /> */}
       </React.Fragment>
@@ -50,4 +41,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfileFeed);
+)(ProfileFeedContainer);

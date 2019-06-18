@@ -2,31 +2,78 @@
 // import { store } from "../index";
 
 // export const ADD_LIKE = "ADD_LIKE";
+// export const ADD_LIKE_SUCCESS = "ADD_LIKE_SUCCESS";
+// export const ADD_LIKE_FAIL = "ADD_LIKE_FAIL";
 // export const REMOVE_LIKE = "REMOVE_LIKE";
+// export const REMOVE_LIKE_SUCCESS = "REMOVE_LIKE_SUCCESS";
+// export const REMOVE_LIKE_FAIL = "REMOVE_LIKE_FAIL";
 
 // const url = domain + "/likes/";
 
-// export const handleAddLike = e => dispatch => {
-//     const token = store.getState().auth.login.token
+// export const toggleLike = (messageId) => (dispatch) => {
 
-//     return fetch(url, {
-//         method: "POST",
-//         headers: {
-//             ...jsonHeaders,
-//             Authorization: `Bearer ${token}`
-//         },
-//         body: JSON.stringify({token})
+// const like = message.likes.find(like => like.userId === userId)
+//     if(like) {
+//         dispatch(removeLike(like.id))
+//     } else {
+//         dispatch(addLike(messageId))
+//     }
+// }
+
+
+// export const removeLike = likeId => (dispatch, getState) => {
+//     dispatch({
+//         type: REMOVE_LIKE
+//     });
+// const token = getState().auth.login.token;
+
+//     return fetch(url + `/${likeId}`, {
+//         method: "DELETE",
+//         headers: { Authorization: `Bearer ${token}`}
 //     })
 //     .then(handleJsonResponse)
 //     .then(result => {
 //         return dispatch({
-//             type: ADD_LIKE,
+//             type: REMOVE_LIKE_SUCCESS,
 //             payload: result
-//         });
+//         })
 //     })
-//     // .catch(err => {
-//     //     return Promise.reject(
-//     //         dispatch({ type: })
-//     //     )
-//     // })
-// }
+//     .catch(err => {
+//         return Promise.reject(
+//             dispatch({
+//                 type: REMOVE_LIKE_FAIL,
+//                 payload: err
+//             })
+//         );
+//     });
+    
+// };
+
+// export const addLike = messageId => (dispatch, getState) => {
+//     dispatch({
+//         type: ADD_LIKE
+//     });
+// const token = getState().auth.login.token;
+
+//     return fetch(url, {
+//         method: "POST",
+//         headers: { ...jsonHeaders, Authorization: `Bearer ${token}`},
+//         body: JSON.stringify({ messageId })
+//     })
+//     .then(handleJsonResponse)
+//     .then(result => {
+//         return dispatch({
+//             type: ADD_LIKE_SUCCESS,
+//             payload: result
+//         })
+//     })
+//     .catch(err => {
+//         return Promise.reject(
+//             dispatch({
+//                 type: ADD_LIKE_FAIL,
+//                 payload: err
+//             })
+//         );
+//     });
+    
+// };

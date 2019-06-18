@@ -16,9 +16,10 @@ export const DELETE_USER_FAIL = "DELETE_USER_FAIL";
 
 const url = domain + "/users";
 
-export const getUser = userId => dispatch => {
+export const getUser = () => (dispatch, getState) => {
+  const userId = getState().auth.login.id;
   dispatch({ type: GET_USER });
-  fetch(url + "/" + userId)
+  return fetch(url + "/" + userId)
     .then(response => {
       if (!response.ok) {
         response.json().then(err => {
@@ -28,10 +29,11 @@ export const getUser = userId => dispatch => {
       return response.json();
     })
     .then(data => {
-      dispatch({ type: GET_USER_SUCCESS, data: data.user });
+      console.log(data)
+      return dispatch({ type: GET_USER_SUCCESS, data: data.user });
     })
     .catch(err => {
-      dispatch({ type: GET_USER_FAIL, err });
+      return dispatch({ type: GET_USER_FAIL, err });
     });
 };
 
@@ -125,13 +127,9 @@ export const deleteUserProfile = token => (dispatch, getState) => {
   });
 };
 
-export const getLoggedInUser = () => (dispatch, getState) => {
-  const userId = getState().auth.login.id;
-  return dispatch(getUser(userId));
-};
 
 export const getUserProfile = () => dispatch => {
-  dispatch(getLoggedInUser()).then(() => dispatch(getLoggedInUsersMessages()));
+  dispatch(getUser()).then(() => dispatch(getLoggedInUsersMessages()));
 };
 
 

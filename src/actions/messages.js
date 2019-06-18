@@ -53,7 +53,7 @@ export const handleCreateKweet = text => dispatch => {
     })
     .then(handleJsonResponse)
     .then(result => {
-        console.log(result)
+        // console.log(result)
         dispatch({
             type: CREATE_KWEET_SUCCESS,
             payload: result

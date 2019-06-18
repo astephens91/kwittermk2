@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
     case GET_USER_SUCCESS:
       console.log(action.data);
       return {...state,
-        loggedInUser: action.data,
+        user: action.data,
       }
       // return {
       //   ...state,
