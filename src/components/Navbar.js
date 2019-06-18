@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Menu, Button, Image } from "semantic-ui-react";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutThenGoToLogin as logout } from "../actions";
 import logo from "../img/birdlogo.png";

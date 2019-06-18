@@ -42,7 +42,7 @@ const login = loginData => dispatch => {
     });
 };
 
-const logout = () => (dispatch, getState) => {
+export const logout = () => (dispatch, getState) => {
   const token = getState().auth.login.token;
   dispatch({
     type: LOGOUT

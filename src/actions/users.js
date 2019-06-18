@@ -1,4 +1,6 @@
 import { domain } from "./constants";
+import { logout } from "./auth.js";
+import { push } from "connected-react-router";
 import { getLoggedInUsersMessages } from ".";
 
 
@@ -8,6 +10,9 @@ export const GET_USER_FAIL = "GET_USER_FAIL";
 export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
 export const UPDATE_USER_FAIL = "UPDATE_USER_FAIL";
+export const DELETE_USER = "DELETE_USER";
+export const DELETE_USER_SUCCESS = "DELETE_USER_SUCCESS";
+export const DELETE_USER_FAIL = "DELETE_USER_FAIL";
 
 const url = domain + "/users";
 
@@ -92,6 +97,34 @@ export const updateUser = userData => (dispatch, getState) => {
     });
 };
 
+export const deleteUserProfile = token => (dispatch, getState) => {
+  const userId = getState().auth.login.id
+  console.log(url + "/" + userId)
+  dispatch({ type: DELETE_USER });
+  fetch(url + "/" + userId, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      response.json().then(err => {
+        throw err;
+      });
+    }
+    return response.json();
+  })
+  .then(data => {
+    dispatch({ type: DELETE_USER_SUCCESS, data: data.user })
+    dispatch(push("/"))
+    return dispatch(logout())
+  })
+  .catch(err => {
+    dispatch({ type: DELETE_USER_FAIL, err })
+  });
+};
+
 export const getLoggedInUser = () => (dispatch, getState) => {
   const userId = getState().auth.login.id;
   return dispatch(getUser(userId));
@@ -100,3 +133,5 @@ export const getLoggedInUser = () => (dispatch, getState) => {
 export const getUserProfile = () => dispatch => {
   dispatch(getLoggedInUser()).then(() => dispatch(getLoggedInUsersMessages()));
 };
+
+
