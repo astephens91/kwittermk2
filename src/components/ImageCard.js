@@ -3,6 +3,7 @@ import { Card } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { getUser } from "../actions";
 import UserImage from "./UserImage";
+import Imageuploader from "./uploadImage"
 
 class ImageCard extends Component {
   componentDidMount() {
@@ -13,6 +14,10 @@ class ImageCard extends Component {
       <Card style={{ margin: "auto" }}>
         <Card.Content style={{ margin: "auto" }}>
           <UserImage userId={this.props.userId} seize="huge" />
+         
+        </Card.Content>
+        <Card.Content>
+        <Imageuploader />
         </Card.Content>
         <Card.Content>
           <Card.Header style={{ textAlign: "center" }}>
@@ -20,6 +25,7 @@ class ImageCard extends Component {
           </Card.Header>
         </Card.Content>
       </Card>
+      
     );
   }
 }
