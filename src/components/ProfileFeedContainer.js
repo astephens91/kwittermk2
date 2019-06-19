@@ -21,8 +21,6 @@ class ProfileFeedContainer extends Component {
           Last Updated: {new Date(this.props.user.updatedAt).toDateString()}
         </p>
         <Feed messages = {this.props.messages} />
-        
-        {/* <Navbar /> */}
       </React.Fragment>
     );
   }

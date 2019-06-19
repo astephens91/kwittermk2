@@ -15,10 +15,10 @@ const url = domain + "/likes/";
 
 export const toggleLike = messageId => (dispatch, getState) => {
   const userId = getState().auth.login.id;
-
+  console.log("toggleLike")
   let message = null;
   message = getState().messages.userMessages.find(
-    message => message.id === messageId
+    message => message !== undefined && message.id === messageId
   );
 
   if (!message) {
@@ -29,7 +29,7 @@ export const toggleLike = messageId => (dispatch, getState) => {
 
   const like = message.likes.find(like => like.userId === userId);
   if (like) {
-    return dispatch(removeLike(like.id)).then();
+    return dispatch(removeLike(like.id));
   } else {
     return dispatch(addLike(messageId)).then();
   }
@@ -47,7 +47,7 @@ export const removeLike = likeId => (dispatch, getState) => {
   });
   const token = getState().auth.login.token;
 
-  return fetch(url + `/${likeId}`, {
+  return fetch(url + `${likeId}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` }
   })
@@ -81,6 +81,7 @@ export const addLike = messageId => (dispatch, getState) => {
   })
     .then(handleJsonResponse)
     .then(result => {
+
       return dispatch({
         type: ADD_LIKE_SUCCESS,
         payload: result

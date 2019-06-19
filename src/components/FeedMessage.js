@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { domain, handleJsonResponse } from "../actions/constants";
+import { Button } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { toggleLikeThenUpdateMessageById as toggleLike } from "../actions"
 import ostrichAvatar from "../img/ostrichAvatar.png";
-
 
 class FeedMessage extends Component {
   state = {
@@ -10,7 +12,7 @@ class FeedMessage extends Component {
     displayName: ""
   };
   componentDidMount() {
-    this.getUserInfo()
+    this.getUserInfo();
   }
 
   getUserInfo() {
@@ -19,14 +21,13 @@ class FeedMessage extends Component {
       .then(handleJsonResponse)
       .then(result => {
         //   console.log(result)
-          this.setState({
-              photoUrl: result.user.photoUrl ? result.user.photoUrl : ostrichAvatar,
-              username: result.user.username,
-              displayName: result.user.displayName
-          })
+        this.setState({
+          photoUrl: result.user.photoUrl ? result.user.photoUrl : ostrichAvatar,
+          username: result.user.username,
+          displayName: result.user.displayName
+        });
         //   console.log(this.state)
-      })
-      
+      });
   }
   render() {
     return (
@@ -35,10 +36,21 @@ class FeedMessage extends Component {
         <p>{this.props.createdAt}</p>
         <p>{this.props.text}</p>
         <p>Number of likes: {this.props.likes}</p>
-        <button>Like/Unlike</button>
+        <Button
+          style={{ backgroundColor: "red" }}
+          onClick={event => this.props.toggleLike(this.props.messageid)}
+        >
+          Like
+        </Button>{" "}
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default FeedMessage;
+const mapDispatchToProps = {
+  toggleLike
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(FeedMessage);

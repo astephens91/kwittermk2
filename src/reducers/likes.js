@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         toggleLikeLoading: false,
-        toggleLikeError: action.payload
+        toggleLikeError: null
       };
     case ADD_LIKE_FAIL:
       return {
