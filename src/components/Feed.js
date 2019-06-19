@@ -3,7 +3,7 @@ import { FeedMessage } from ".";
 
 class Feed extends Component {
   render() {
-    console.log(this.props.messages)
+    // console.log(this.props.messages)
     return (
       <React.Fragment>
        {this.props.messages.map((message, index) => {
@@ -19,7 +19,6 @@ class Feed extends Component {
             />
           )}
         })}
-        
       </React.Fragment>
     );
   }

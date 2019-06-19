@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Form, Grid, Modal, Button, Icon, Card } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { updateUser } from "../actions/users";
-import { store } from "../index"
-import {UPDATE_USER} from "../actions"
 
 class UpdateProfileModal extends Component {
   state = { displayName: "", password: "", about: "", open: false };

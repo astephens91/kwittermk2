@@ -5,11 +5,16 @@ import Navbar from "../Navbar";
 import UpdateProfileModal from "../UpdateProfileModal";
 import DeleteUser from "../DeleteUser";
 import ProfileFeedContainer from "../ProfileFeedContainer";
-import WriteKweet from "../WriteKweet"
+import WriteKweet from "../WriteKweet";
+import Feed from "../Feed";
+import { getMessages } from "../../actions";
+import { connect } from "react-redux";
 
 
-export default class UserProfile extends Component {
-  
+class UserProfile extends Component {
+  componentDidMount(){
+    this.props.getMessages()
+  }
   render() {
     return (
       <React.Fragment>
@@ -29,6 +34,7 @@ export default class UserProfile extends Component {
             <Grid.Column floated="right" width={10}>
               <Segment>
                 <ProfileFeedContainer />
+                <Feed messages={this.props.messages} />
               </Segment>{" "}
             </Grid.Column>
           </Grid.Row>
@@ -37,3 +43,10 @@ export default class UserProfile extends Component {
     );
   }
 }
+
+export default connect(
+  ({messages}) => ({
+    messages: messages.userMessages
+  }),
+  {getMessages}
+)(UserProfile)
