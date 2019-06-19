@@ -16,7 +16,7 @@ class ProfileCard extends Component {
         <Card.Content>
           <ImageCard />
           <Card.Meta>
-            Kweefing since {moment(this.props.createdAt).format("MMMM DD YYYY")}
+            Kweeting since {moment(this.props.createdAt).format("MMMM DD YYYY")}
             }
           </Card.Meta>
           <Card>

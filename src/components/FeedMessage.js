@@ -35,7 +35,7 @@ class FeedMessage extends Component {
         <p>{this.props.createdAt}</p>
         <p>{this.props.text}</p>
         <p>Number of likes: {this.props.likes}</p>
-        {/* <button>Like/Unlike</button> */}
+        <button>Like/Unlike</button>
       </React.Fragment>
     )
   }

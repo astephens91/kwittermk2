@@ -8,7 +8,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 
 export const LOGOUT = "LOGOUT";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+export const LOGOUT_FAIL = "LOGOUT_FAILURE";
 
 export const REGISTER = "REGISTER";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
@@ -59,7 +59,7 @@ export const logout = () => (dispatch, getState) => {
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: LOGOUT_FAILURE, err });
+      dispatch({ type: LOGOUT_FAIL, err });
     });
 };
 

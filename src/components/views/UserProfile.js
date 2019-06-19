@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card, Grid, Segment } from "semantic-ui-react";
 import ProfileCard from "../ProfileCard";
 import Navbar from "../Navbar";
+import WriteKweet from "../WriteKweet";
 // import UpdateProfileModal from "../UpdateProfileModal";
 import DeleteUser from "../DeleteUser";
 import ProfileFeedContainer from "../ProfileFeedContainer";
@@ -20,6 +21,7 @@ export default class UserProfile extends Component {
                 {/* This is where profile pictures will go */}
                 <DeleteUser />
               </Card>
+              <WriteKweet />
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
               <Segment>
