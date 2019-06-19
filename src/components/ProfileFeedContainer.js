@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUserProfile } from "../actions";
-import { Feed } from "."
+// import { Feed } from "."
 
 class ProfileFeedContainer extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class ProfileFeedContainer extends Component {
         <p>
           Last Updated: {new Date(this.props.user.updatedAt).toDateString()}
         </p>
-        <Feed messages = {this.props.messages} />
+        {/* <Feed messages = {this.props.messages} /> */}
       </React.Fragment>
     );
   }

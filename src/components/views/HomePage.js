@@ -3,8 +3,8 @@ import { Grid } from "semantic-ui-react";
 import Navbar from "../Navbar";
 import WriteKweet from "../WriteKweet";
 import { connect } from "react-redux";
-import { Feed } from "../"
-import { getMessages } from "../../actions"
+import { Feed } from "../";
+import { getMessages } from "../../actions";
 
 export class HomePage extends Component {
   componentDidMount(){
