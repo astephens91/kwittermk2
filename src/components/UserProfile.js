@@ -11,6 +11,7 @@ class UserProfile extends Component {
   componentDidMount() {
     this.props.getUserProfile();
   }
+
   render() {
     return (
       <React.Fragment>

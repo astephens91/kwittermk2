@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getUser } from "../actions";
 import ImageCard from "./ImageCard";
 import moment from "moment";
+import ImageUploader from "./uploadImage"
 
 class ProfileCard extends Component {
   componentDidMount() {
@@ -20,6 +21,9 @@ class ProfileCard extends Component {
             }
           </Card.Meta>
           <Card>
+            <Card.Content>
+              <ImageUploader />
+            </Card.Content>
             <Card.Content>
               <Card.Header as="h3">Bio:</Card.Header>
               <Card.Description className="bioDetails">

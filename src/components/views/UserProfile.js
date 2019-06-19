@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { Card, Grid, Segment } from "semantic-ui-react";
 import ProfileCard from "../ProfileCard";
 import Navbar from "../Navbar";
-import WriteKweet from "../WriteKweet";
-// import UpdateProfileModal from "../UpdateProfileModal";
+import UpdateProfileModal from "../UpdateProfileModal";
 import DeleteUser from "../DeleteUser";
 import ProfileFeedContainer from "../ProfileFeedContainer";
+import WriteKweet from "../WriteKweet"
+
 
 export default class UserProfile extends Component {
+  
   render() {
     return (
       <React.Fragment>
@@ -19,6 +21,7 @@ export default class UserProfile extends Component {
               <ProfileCard />
               <Card style={{ margin: "auto", marginTop: "50px" }}>
                 {/* This is where profile pictures will go */}
+                <UpdateProfileModal />
                 <DeleteUser />
               </Card>
               <WriteKweet />

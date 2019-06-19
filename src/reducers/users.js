@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
         getUserLoading: false
       };
     case UPDATE_USER:
-      return state;
+      return {...state};
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
