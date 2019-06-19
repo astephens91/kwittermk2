@@ -21,14 +21,14 @@ export const getMessages = (limit = 100, offset = 0, userId) => dispatch => {
 
   // https://kwitter-api.herokuapp.com/message?limit=100&offset=0
   // What we are fetching specifically
-  fetch(
+  return fetch(
     url +
       `?limit=${limit}&offset=${offset}` +
       (userId ? `&userId=${userId}` : "")
   )
     .then(handleJsonResponse)
     .then(result => {
-      dispatch({
+      return dispatch({
         type: userId ? GET_USER_MESSAGES_SUCCESS : GET_MESSAGES_SUCCESS,
         payload: result
       });
@@ -59,8 +59,8 @@ export const handleCreateKweet = text => dispatch => {
   })
     .then(handleJsonResponse)
     .then(result => {
-      // console.log(result)
-      dispatch({
+      console.log(result)
+      return dispatch({
         type: CREATE_KWEET_SUCCESS,
         payload: result
       });
@@ -76,7 +76,7 @@ export const handleCreateKweet = text => dispatch => {
 export const updateMessageById = messageId => dispatch => {
   dispatch({ type: UPDATE_MESSAGE_BY_ID });
 
-  return fetch(url + `/${messageId}`)
+  fetch(url + `/${messageId}`)
     .then(handleJsonResponse)
     .then(result => {
       return dispatch({
@@ -85,7 +85,7 @@ export const updateMessageById = messageId => dispatch => {
       });
     })
     .catch(err => {
-      return Promise.reject(
+      Promise.reject(
         dispatch({
           type: UPDATE_MESSAGE_BY_ID_FAIL,
           payload: err

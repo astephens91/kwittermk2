@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Card, Feed } from "semantic-ui-react";
+import { Card, Feed } from "semantic-ui-react";
 import {
   getUserProfile,
   toggleLikeThenUpdateMessageById as toggleLike
@@ -44,11 +44,6 @@ class UserProfile extends Component {
                         {new Date(message.createdAt).toDateString()}
                       </Feed.Date>
                       <h3>{message.text}</h3>
-                      <Button style={{backgroundColor: "red"}}
-                        onClick={event => this.props.toggleLike(message.id)}
-                      >
-                        Like/Unlike
-                      </Button>
                       <p>{message.likes.length}</p>
                     </Feed.Summary>
                   </h3>

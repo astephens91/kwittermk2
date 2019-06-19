@@ -3,9 +3,11 @@ import { FeedMessage } from ".";
 
 class Feed extends Component {
   render() {
+    console.log(this.props.messages)
     return (
       <React.Fragment>
-        {this.props.messages.map((message, index) => {
+       {this.props.messages.map((message, index) => {
+          if(message !== undefined){
           return (
             <FeedMessage
               key={index}
@@ -13,8 +15,9 @@ class Feed extends Component {
               createdAt={message.createdAt}
               text={message.text}
               likes={message.likes.length}
+              messageid={message.id}
             />
-          )
+          )}
         })}
         
       </React.Fragment>

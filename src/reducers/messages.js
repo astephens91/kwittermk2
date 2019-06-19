@@ -69,16 +69,18 @@ export default (state = initialState, action) => {
         getKweetLoading: true
       };
     case CREATE_KWEET_SUCCESS:
+      const newMessageList = Array.from(state.messages)
+      newMessageList.unshift(action.payload.message)
       return {
         ...state,
-        messages: [action.payload.message, ...state.message],
+        messages: newMessageList,
         getKweetLoading: false,
       };
     case CREATE_KWEET_FAIL:
       return {
         ...state,
         getKweetError: action.payload,
-        getKweetError: null
+        getKweetLoading: false
 
       };
     case UPDATE_MESSAGE_BY_ID:
@@ -88,21 +90,23 @@ export default (state = initialState, action) => {
         updateMessageByIdError: null
       };
     case UPDATE_MESSAGE_BY_ID_SUCCESS:
+    console.log(state.messages)
       const newMessages = state.messages.map(message =>
-        message.id === action.payload.message.id
-          ? action.payload.message
+       message !== undefined && message.id === action.payload.id
+          ? action.payload
           : message
       );
       const newUserMessages = state.messages.map(message =>
-        message.id === action.payload.message.id
-          ? action.payload.message
+       message !== undefined && message.id === action.payload.id
+          ? action.payload
           : message
       );
       return {
         ...state,
         updateMessageByIdLoading: false,
         messages: newMessages,
-        userMessages: newUserMessages
+        userMessages: newUserMessages,
+        updateMessageByIdError: action.payload
       };
     case UPDATE_MESSAGE_BY_ID_FAIL:
       return {
