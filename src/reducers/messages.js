@@ -7,7 +7,10 @@ import {
   GET_USER_MESSAGES_FAIL,
   CREATE_KWEET,
   CREATE_KWEET_SUCCESS,
-  CREATE_KWEET_FAIL
+  CREATE_KWEET_FAIL,
+  UPDATE_MESSAGE_BY_ID,
+  UPDATE_MESSAGE_BY_ID_SUCCESS,
+  UPDATE_MESSAGE_BY_ID_FAIL
 } from "../actions";
 
 const initialState = {
@@ -18,7 +21,9 @@ const initialState = {
   userMessages: [],
   getUserMessagesError: null,
   getKweetLoading: false,
-  getKweetError: null
+  getKweetError: null,
+  updateMessageByIdLoading: false,
+  updateMessageByIdError: null
 };
 
 export default (state = initialState, action) => {
@@ -66,17 +71,44 @@ export default (state = initialState, action) => {
     case CREATE_KWEET_SUCCESS:
       return {
         ...state,
-        messages: [
-          action.payload.message,
-          ...state.message
-        ],
-        getKweetLoading: false
+        messages: [action.payload.message, ...state.message],
+        getKweetLoading: false,
       };
     case CREATE_KWEET_FAIL:
       return {
         ...state,
         getKweetError: action.payload,
-        getKweetLoading: false
+        getKweetError: null
+
+      };
+    case UPDATE_MESSAGE_BY_ID:
+      return {
+        ...state,
+        updateMessageByIdLoading: true,
+        updateMessageByIdError: null
+      };
+    case UPDATE_MESSAGE_BY_ID_SUCCESS:
+      const newMessages = state.messages.map(message =>
+        message.id === action.payload.message.id
+          ? action.payload.message
+          : message
+      );
+      const newUserMessages = state.messages.map(message =>
+        message.id === action.payload.message.id
+          ? action.payload.message
+          : message
+      );
+      return {
+        ...state,
+        updateMessageByIdLoading: false,
+        messages: newMessages,
+        userMessages: newUserMessages
+      };
+    case UPDATE_MESSAGE_BY_ID_FAIL:
+      return {
+        ...state,
+        updateMessageByIdError: action.payload,
+        updateMessageByIdLoading: false
       };
     default:
       return state;

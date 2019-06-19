@@ -23,6 +23,7 @@ export default class UserProfile extends Component {
                 <UpdateProfileModal />
                 <DeleteUser />
               </Card>
+              <WriteKweet />
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
               <Segment>

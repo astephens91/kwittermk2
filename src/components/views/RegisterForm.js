@@ -63,16 +63,7 @@ class RegisterForm extends Component {
                     required
                     onChange={this.handleChange}
                   />
-                  {/* <label htmlFor="password" />
-                  <Form.Input
-                    type="password"
-                    name="confirmPassword"
-                    icon="lock"
-                    iconPosition="left"
-                    placeholder="Confirm Password"
-                    required
-                    onChange={this.handleChange}
-                  /> */}
+                  
                   <button
                     className="ui black button"
                     type="submit"

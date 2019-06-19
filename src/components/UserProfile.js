@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Feed, Icon } from "semantic-ui-react";
-import { getUserProfile, toggleLike } from "../actions";
+import { Button, Card, Feed } from "semantic-ui-react";
+import {
+  getUserProfile,
+  toggleLikeThenUpdateMessageById as toggleLike
+} from "../actions";
 import Navbar from "./Navbar";
 
 class UserProfile extends Component {
@@ -27,10 +30,7 @@ class UserProfile extends Component {
                 <p>
                   Joined {new Date(this.props.user.createdAt).toDateString()}
                 </p>
-                {/* <p>
-                Last Online{" "}
-                {new Date(this.props.user.updatedAt).toDateString()}
-              </p> */}
+               
               </Feed.Summary>
             </Feed.Label>
           </Feed>
@@ -45,16 +45,12 @@ class UserProfile extends Component {
                         {new Date(message.createdAt).toDateString()}
                       </Feed.Date>
                       <h3>{message.text}</h3>
-                      <Feed.Like>
-                        <Icon name="like">{message.likes.length}</Icon>
-                      </Feed.Like>
-                      <button
-                        onClick={event =>
-                          this.props.handleToggleLike(message.id)
-                        }
+                      <Button style={{backgroundColor: "red"}}
+                        onClick={event => this.props.toggleLike(message.id)}
                       >
                         Like/Unlike
-                      </button>
+                      </Button>
+                      <p>{message.likes.length}</p>
                     </Feed.Summary>
                   </h3>
                 </Feed>
