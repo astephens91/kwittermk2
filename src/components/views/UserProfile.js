@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import UpdateProfileModal from "../UpdateProfileModal";
 import DeleteUser from "../DeleteUser";
 import ProfileFeedContainer from "../ProfileFeedContainer";
+import WriteKweet from "../WriteKweet"
 
 
 export default class UserProfile extends Component {
