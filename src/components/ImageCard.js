@@ -19,10 +19,10 @@ class ImageCard extends Component {
           </Card.Content>
           <Card.Content></Card.Content>
           <Card.Content>
-            <Card.Header style={{ textAlign: "center" }}>
+            <Card.Header style={{ textAlign: "left" }}>
               {this.props.user.username}
               <br></br>
-             <Icon className="small black at">{this.props.user.displayName}</Icon>
+             <Icon  className="small black at">{this.props.user.displayName}</Icon>
             </Card.Header>
           </Card.Content>
         </Card>

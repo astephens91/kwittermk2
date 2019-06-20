@@ -19,7 +19,7 @@ class DeleteUser extends Component {
       <React.Fragment>
         <Modal
           trigger={
-            <Button onClick={this.handleModal}>
+            <Button style={{backgroundColor: "#8D99AE"}} onClick={this.handleModal}>
               <Icon name="user delete" />
               Delete Profile
             </Button>
