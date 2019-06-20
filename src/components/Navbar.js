@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutThenGoToLogin as logout } from "../actions";
 import logo from "../img/birdlogo.png";
-// import UserImage from "./UserImage";
 import "../index.css";
 
 const styles = {
@@ -38,8 +37,7 @@ class Navbar extends Component {
             </Link>
             <Link to="/profile">
               <Menu.Item style={styles.menuStyle}>
-                {/* <Image src={this.state.src} size={this.props.size} circular /> */}
-                {/* <UserImage src={this.state.src} size={this.props.size} circular/> */}
+          
                 Profile
               </Menu.Item>
             </Link>
@@ -48,7 +46,6 @@ class Navbar extends Component {
               <Menu.Item>
                 <Button
                   style={{ backgroundColor: "#ff0000", color: "white" }}
-                  /*Logout handler will go here */
                   onClick={this.handleLogout}
                 >
                   Logout

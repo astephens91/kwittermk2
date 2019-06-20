@@ -18,7 +18,9 @@ const initialState = {
     about: "",
     createdAt: "",
     updatedAt: "",
-    messages: []
+    messages: [],
+    pictureLocation: "",
+    src: ""
   },
   getUserError: null,
   getUserLoading: false
@@ -33,16 +35,8 @@ export default (state = initialState, action) => {
         getUserError: null
       };
     case GET_USER_SUCCESS:
-      console.log(action.data);
-      return {...state,
-        user: action.data,
-      }
-      // return {
-      //   ...state,
-      //   user: action.payload.user,
-      //   // loggedInUser: action.data,
-      //   getUserLoading: false
-      // };
+      return { ...state, user: action.data };
+    
     case GET_USER_FAIL:
       return {
         ...state,
@@ -50,11 +44,11 @@ export default (state = initialState, action) => {
         getUserLoading: false
       };
     case UPDATE_USER:
-      return {...state};
+      return { ...state };
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
-        loggedInUser: {...state.loggedInUser, ...action.data}
+        user: action.data
       };
     case UPDATE_USER_FAIL:
       return state;
@@ -64,8 +58,8 @@ export default (state = initialState, action) => {
     case DELETE_USER_SUCCESS:
       return {
         ...state,
-        loggedInUser: {...state.loggedInUser}
-      }
+        loggedInUser: { ...state.loggedInUser }
+      };
     case DELETE_USER_FAIL:
       return state;
 

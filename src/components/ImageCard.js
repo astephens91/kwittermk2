@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { getUser } from "../actions";
 import UserImage from "./UserImage";
 import "../index.css";
-// import { getUserProfile } from "../actions";
 
-// import Imageuploader from "./uploadImage"
 
 class ImageCard extends Component {
   componentDidMount() {
@@ -19,12 +17,12 @@ class ImageCard extends Component {
           <Card.Content style={{ margin: "auto" }}>
             <UserImage userId={this.props.userId} seize="huge" />
           </Card.Content>
-          <Card.Content>{/* <Imageuploader /> */}</Card.Content>
+          <Card.Content></Card.Content>
           <Card.Content>
             <Card.Header style={{ textAlign: "center" }}>
               {this.props.user.username}
               <br></br>
-             <Icon name="small black at">{this.props.user.displayName}</Icon>
+             <Icon className="small black at">{this.props.user.displayName}</Icon>
             </Card.Header>
           </Card.Content>
         </Card>

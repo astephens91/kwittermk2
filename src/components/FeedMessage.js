@@ -20,13 +20,11 @@ class FeedMessage extends Component {
     fetch(url)
       .then(handleJsonResponse)
       .then(result => {
-        //   console.log(result)
         this.setState({
           photoUrl: result.user.photoUrl ? result.user.photoUrl : ostrichAvatar,
           username: result.user.username,
           displayName: result.user.displayName
         });
-        //   console.log(this.state)
       });
   }
   render() {

@@ -12,9 +12,16 @@ import { connect } from "react-redux";
 
 
 class UserProfile extends Component {
-  componentDidMount(){
-    this.props.getMessages()
+  
+  forceUpdateHandler(){
+    this.forceUpdate();
+  };
+
+  componentWillUpdate(nextProps){
+    if(this.props.messages !== nextProps.messages)
+    {this.forceUpdateHandler()}
   }
+
   render() {
     return (
       <React.Fragment>
@@ -25,10 +32,10 @@ class UserProfile extends Component {
             <Grid.Column floated="left" width={6}>
               <ProfileCard />
               <Card style={{ margin: "auto", marginTop: "50px" }}>
-                {/* This is where profile pictures will go */}
                 <UpdateProfileModal />
                 <DeleteUser />
               </Card>
+              
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
               <Segment className="FeedContainer">

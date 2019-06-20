@@ -23,7 +23,6 @@ class WriteKweet extends Component {
   };
 
   render() {
-    // console.log(this);
     const { handleSubmit, handleChange } = this;
     const { kweet } = this.state;
     return (
@@ -45,8 +44,8 @@ class WriteKweet extends Component {
             />
             <Form.Field
               style={{
-                backgroundColor: "#f5dfce",
-                color: "black",
+                backgroundColor: "#2B2D42",
+                color: "white",
                 fontSize: "medium"
               }}
               id="form-button-control-public"

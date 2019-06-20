@@ -20,8 +20,6 @@ export class HomePage extends Component {
               <WriteKweet />
               {console.log(this.props.messages)}
               <Feed messages = {this.props.messages} />
-              {/* this is where profilepicture component goes
-                        this is where userfeed component goes */}
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -3,7 +3,6 @@ import { logout } from "./auth.js";
 import { push } from "connected-react-router";
 import { getLoggedInUsersMessages } from ".";
 
-
 export const GET_USER = "GET_USER";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_FAIL = "GET_USER_FAIL";
@@ -29,7 +28,6 @@ export const getUser = () => (dispatch, getState) => {
       return response.json();
     })
     .then(data => {
-      console.log(data)
       return dispatch({ type: GET_USER_SUCCESS, data: data.user });
     })
     .catch(err => {
@@ -39,7 +37,7 @@ export const getUser = () => (dispatch, getState) => {
 
 export const updateUser = userData => (dispatch, getState) => {
   const token = getState().auth.login.token;
-  
+
   if (userData.displayName === "") {
     delete userData.displayName;
   }
@@ -66,14 +64,7 @@ export const updateUser = userData => (dispatch, getState) => {
   }
   dispatch({ type: UPDATE_USER });
 
-//   fetch(url).then(res => res.json()).then(response => {
-//     console.log(response.users)
-//       const userId = response.users.filter(user => {
-//           return user.username === "testuser1"
-//       })
-//       console.log(userId)
-//   })
-  
+
   fetch(url + "/" + getState().auth.login.id, {
     method: "PATCH",
     headers: {
@@ -81,19 +72,16 @@ export const updateUser = userData => (dispatch, getState) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-        password: userData.password,
-        about: userData.bio,
-        displayName: userData.displayName
+      password: userData.password,
+      about: userData.bio,
+      displayName: userData.displayName
     })
   })
     .then(response => {
       return response.json();
     })
     .then(data => {
-      console.log(data.user)
-      dispatch({ type: UPDATE_USER_SUCCESS, data: data.user })
-      window.location.reload();;
-      
+      dispatch({ type: UPDATE_USER_SUCCESS, data: data.user });
     })
     .catch(err => {
       dispatch({ type: UPDATE_USER_FAIL, err });
@@ -101,8 +89,7 @@ export const updateUser = userData => (dispatch, getState) => {
 };
 
 export const deleteUserProfile = token => (dispatch, getState) => {
-  const userId = getState().auth.login.id
-  console.log(url + "/" + userId)
+  const userId = getState().auth.login.id;
   dispatch({ type: DELETE_USER });
   fetch(url + "/" + userId, {
     method: "DELETE",
@@ -110,27 +97,24 @@ export const deleteUserProfile = token => (dispatch, getState) => {
       Authorization: `Bearer ${token}`
     }
   })
-  .then(response => {
-    if (!response.ok) {
-      response.json().then(err => {
-        throw err;
-      });
-    }
-    return response.json();
-  })
-  .then(data => {
-    dispatch({ type: DELETE_USER_SUCCESS, data: data.user })
-    dispatch(push("/"))
-    return dispatch(logout())
-  })
-  .catch(err => {
-    dispatch({ type: DELETE_USER_FAIL, err })
-  });
+    .then(response => {
+      if (!response.ok) {
+        response.json().then(err => {
+          throw err;
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      dispatch({ type: DELETE_USER_SUCCESS, data: data.user });
+      dispatch(push("/"));
+      return dispatch(logout());
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_USER_FAIL, err });
+    });
 };
-
 
 export const getUserProfile = () => dispatch => {
   dispatch(getUser()).then(() => dispatch(getLoggedInUsersMessages()));
 };
-
-
