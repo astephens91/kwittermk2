@@ -32,14 +32,13 @@ class UserProfile extends Component {
             <Grid.Column floated="left" width={6}>
               <ProfileCard />
               <Card style={{ margin: "auto", marginTop: "50px" }}>
-                {/* This is where profile pictures will go */}
                 <UpdateProfileModal />
                 <DeleteUser />
               </Card>
               
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
-              <Segment>
+              <Segment className="FeedContainer">
                 <ProfileFeedContainer />
                 <WriteKweet />
                 <Feed messages={this.props.messages} />

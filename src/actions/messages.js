@@ -19,8 +19,6 @@ export const UPDATE_MESSAGE_BY_ID_FAIL = "UPDATE_MESSAGE_BY_ID_FAIL";
 export const getMessages = (limit = 100, offset = 0, userId) => dispatch => {
   dispatch({ type: GET_MESSAGES });
 
-  // https://kwitter-api.herokuapp.com/message?limit=100&offset=0
-  // What we are fetching specifically
   return fetch(
     url +
       `?limit=${limit}&offset=${offset}` +

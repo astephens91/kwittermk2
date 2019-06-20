@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { FeedMessage } from ".";
-import {getMessages} from "../actions"
 
 class Feed extends Component {
    
 
   render() {
   
-  
+    let messages = this.props.messages.filter(message => {
+      return message !== undefined;
+    });
 
-    // console.log(this.props.messages)
     return (
       <React.Fragment>
-       {this.props.messages.map((message) => {
-          if(message !== undefined){
-          return (
+       {messages.map((message) => {
+          
+          return(
             <FeedMessage
               key={message.id}
               userId={message.userId}
@@ -22,9 +22,9 @@ class Feed extends Component {
               text={message.text}
               likes={message.likes.length}
               messageid={message.id}
-            />
-          )}
-        })}
+          />
+          
+       )})}
       </React.Fragment>
     );
   }

@@ -32,8 +32,8 @@ class LoginForm extends Component {
         <br />
         <br />
         <br />
-        <Segment placeholder>
-          <Divider vertical>Or</Divider>
+        <Segment  style={{backgroundColor: "#2B2D42", color: "white"}} placeholder>
+          <Divider style={{color: "white"}} vertical>Or</Divider>
           <Image className="birdLogo" size="small" src={logo} alt="" />
           <Grid columns={2} stackable textAlign="center">
             <Grid.Column style={{ maxWidth: 350 }}>
@@ -43,8 +43,9 @@ class LoginForm extends Component {
                 onSubmit={this.handleLogin}
               >
                 <h1 className="login">Login</h1>
-                <label htmlFor="username" />
-                <Form.Input
+                <label
+                  htmlFor="username" />
+                <Form.Input 
                   className="username"
                   type="text"
                   name="username"
@@ -74,11 +75,11 @@ class LoginForm extends Component {
                   Login
                 </button>
                 {isLoading && <Spinner name="circle" color="blue" />}
-                {err && <p style={{ color: "red" }}>{err}</p>}
+                {err && <p style={{ color: "red", fontSize: "medium" }}>{err}</p>}
               </Form>
             </Grid.Column>
             <Grid.Column verticalAlign="middle" style={{ maxWidth: 350 }}>
-              <a className="ui black button" href="/register">
+              <a style={{backgroundColor: "#f5dfce", color: "black", fontSize: "medium"}} className="ui button" href="/register">
                 Register
               </a>
             </Grid.Column>

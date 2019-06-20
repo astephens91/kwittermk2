@@ -35,14 +35,8 @@ export default (state = initialState, action) => {
         getUserError: null
       };
     case GET_USER_SUCCESS:
-      console.log(action.data);
       return { ...state, user: action.data };
-    // return {
-    //   ...state,
-    //   user: action.payload.user,
-    //   // loggedInUser: action.data,
-    //   getUserLoading: false
-    // };
+    
     case GET_USER_FAIL:
       return {
         ...state,

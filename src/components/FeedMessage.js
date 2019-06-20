@@ -20,28 +20,26 @@ class FeedMessage extends Component {
     fetch(url)
       .then(handleJsonResponse)
       .then(result => {
-        //   console.log(result)
         this.setState({
           photoUrl: result.user.photoUrl ? result.user.photoUrl : ostrichAvatar,
           username: result.user.username,
           displayName: result.user.displayName
         });
-        //   console.log(this.state)
       });
   }
   render() {
     return (
       <React.Fragment>
-        <Card>
+        <Card className="FeedCard">
         <Card.Content>
         <Card.Header>{this.state.username}</Card.Header>
         <Card.Meta>{new Date(this.props.createdAt).toDateString()}</Card.Meta>
-        <Message>{this.props.text}</Message>
+        <Message className="FeedText">{this.props.text}</Message>
         <Icon name="hand peace">{this.props.likes}</Icon>
         <br></br>
         <br></br>
         <Button
-          style={{ backgroundColor: "red" }}
+          className="LikeButton"
           onClick={event => this.props.toggleLike(this.props.messageid)}
         >
           Like

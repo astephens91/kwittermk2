@@ -23,46 +23,55 @@ class WriteKweet extends Component {
   };
 
   render() {
-    // console.log(this);
     const { handleSubmit, handleChange } = this;
     const { kweet } = this.state;
     return (
       <React.Fragment>
-      <Container>
-        <Form onSubmit={handleSubmit}>
-          <Form.Field
-            name="kweet"
-            onChange={handleChange}
-            id="form-textarea-control-opinion"
-            control={TextArea}
-            placeholder="Write Kweet..."
-            value={kweet}
-          />
-          <Form.Field
-            id="form-button-control-public"
-            control={Button}
-            content="Submit"
-          />
-        </Form>
-      </Container>
+        <Container>
+          <Form onSubmit={handleSubmit}>
+            <Form.Field
+              style={{
+                backgroundColor: "#8D99AE",
+                color: "black",
+                fontSize: "medium"
+              }}
+              name="kweet"
+              onChange={handleChange}
+              id="form-textarea-control-opinion"
+              control={TextArea}
+              placeholder="Write Kweet..."
+              value={kweet}
+            />
+            <Form.Field
+              style={{
+                backgroundColor: "#2B2D42",
+                color: "white",
+                fontSize: "medium"
+              }}
+              id="form-button-control-public"
+              control={Button}
+              content="Submit"
+            />
+          </Form>
+        </Container>
       </React.Fragment>
     );
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     userID: state.userID
-  }
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     handleCreateKweet: kweet => {
-      dispatch(handleCreateKweet(kweet))
+      dispatch(handleCreateKweet(kweet));
     }
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
