@@ -65,7 +65,8 @@ class RegisterForm extends Component {
                   />
                   
                   <button
-                    className="ui black button"
+                  style={{backgroundColor: "#2B2D42", color: "white", fontSize: "medium"}}
+                    className="ui button"
                     type="submit"
                     disabled={isLoading}
                   >

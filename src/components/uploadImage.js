@@ -1,5 +1,6 @@
 import React from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { Button, Card, Form } from "semantic-ui-react";
 import { uploadImage } from "../actions/uploadImage"
 // import users from "../reducers/users";
 
@@ -37,10 +38,16 @@ class ImageUploader extends React.Component {
 
     return (
         // <form action={url} method="put" encType="multipart/form-data">
-        <form onSubmit={this.handleSubmit}>
-            <input type="file" name="picture" id="picture"></input>
-            <button type="submit" value="Submit">Submit Upload</button>
-        </form>
+        <React.Fragment>
+        <Form onSubmit={this.handleSubmit}>
+            <input style={{backgroundColor: "#2B2D42", color: "white"}} class="ui button" type="file" name="picture" id="picture"></input>
+            <Form>
+                <Card>
+            <Button className="SubmitUploadButton" type="submit" value="Submit">Submit Upload</Button>
+            </Card>
+            </Form>
+        </Form>
+        </React.Fragment>
         
     )
   }

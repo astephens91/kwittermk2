@@ -21,7 +21,7 @@ class UserProfile extends Component {
             <Feed.Label>
               <Feed.Summary>
                 <h1>This is the user profile</h1>
-                <Feed.User>Name {this.props.user.username}</Feed.User>
+                {/* <Feed.User>Name {this.props.user.username}</Feed.User> */}
                 <br />
                 <Feed.User>
                   Display Name: {this.props.user.displayName}

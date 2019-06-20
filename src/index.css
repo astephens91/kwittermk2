@@ -1,3 +1,6 @@
+.birdLogo {
+  position: fixed !important;
+}
 body {
   margin: 0;
   padding: 0;
@@ -6,21 +9,75 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5dfce !important;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-#background{
-  background-color: rgba(245, 245, 245, 0.55) !important;
+
+#root {
+  background-color: #f5dfce !important;
+}
+
+.BioContainer {
+  font-size: medium !important;
+}
+
+.FeedCard {
+  background-color: #8D99AE !important;
+  font-size: medium !important;
+  width: auto !important;
+
+}
+.FeedContainer{
+  background-color: #2B2D42 !important;
+}
+.FeedText {
+  background-color: #f5dfce !important;
+  font-size: medium !important;
+}
+.FileBioContainer {
+  background-color: #8D99AE !important;
+}
+.FileUploadBio {
+  background-color: #f5dfce !important;
+}
+.ImageContainer {
+  background-color: #2B2D42 !important;
+}
+.KweetingSince {
+  color: white !important;
+  font-size: medium !important;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+.LikeButton {
+  background-color: #2B2D42!important;
+  color: white !important;
 }
 .login {
   text-align: center;
 }
-
-.birdLogo {
-  position: fixed !important;
-
+.NavBar {
+  background-color: #2B2D42 !important;
+  font-size: medium !important;
+  font-weight: bold !important;
+}
+.ProfileFeedContainer {
+  background-color: #848C8E !important;
+}
+.ProfileImage {
+  background-color: #8D99AE !important;
+}
+.SubmitUploadButton {
+  background-color: #2B2D42  !important;
+  color: white !important;
 }
 
+
+.WriteKweet {
+  background-color: black !important;
+}

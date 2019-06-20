@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+// import { Card, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { getUserProfile } from "../actions";
 // import { Feed } from "."
+import "../index.css"
 
 class ProfileFeedContainer extends Component {
   componentDidMount() {
@@ -9,18 +11,18 @@ class ProfileFeedContainer extends Component {
   }
   render() {
     return (
-      <React.Fragment>
-        <p>This is the user profile</p>
-        <p>Username: {this.props.user.username}</p>
-        <p>Display Name: {this.props.user.displayName}</p>
-        <p>About: {this.props.user.about}</p>
-        <p>
+      <React.Fragment className="WriteKweet">
+        {/* <Card className="ProfileFeedContainer"> */}
+        {/* <p>{this.props.user.username}</p> */}
+        {/* <Icon name="blue at">{this.props.user.displayName}</Icon> */}
+        {/* <p>
           Account Created: {new Date(this.props.user.createdAt).toDateString()}
-        </p>
-        <p>
+        </p> */}
+        {/* <p>
           Last Updated: {new Date(this.props.user.updatedAt).toDateString()}
-        </p>
+        </p> */}
         {/* <Feed messages = {this.props.messages} /> */}
+        {/* </Card> */}
       </React.Fragment>
     );
   }

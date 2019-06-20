@@ -26,7 +26,7 @@ class UpdateProfileModal extends Component {
           trigger={
             <Button
               onClick={this.handleModal}
-              style={{ backgroundColor: "#ff0000", color: "white" }}
+              style={{ backgroundColor: "#2B2D42", color: "white" }}
             >
               <Icon name="vcard" />
               Update Profile
@@ -35,13 +35,14 @@ class UpdateProfileModal extends Component {
           open={this.state.open}
           onClose={this.handleModal}
         >
-          <Card style={{ width: "100%" }}>
+          <Card style={{ width: "100%", backgroundColor: "#f5dfce" }}>
             <Card.Content>
               <Form onSubmit={this.handleSubmit} size="large">
                 <Grid container stackable>
                   <Grid.Column floated="left" width={6}>
                     <Form.Input
                       fluid
+                      style={{color: "white"}}
                       placeholder="New display name"
                       name="displayName"
                       label="Change your display name!"
@@ -63,7 +64,7 @@ class UpdateProfileModal extends Component {
                   </Grid.Column>
                   <Grid.Column floated="right" width={6}>
                     <Form.Button
-                      style={{ backgroundColor: "#ff0000", color: "white" }}
+                      style={{ backgroundColor: "#2B2D42", color: "white" }}
                       content="Save your changes!"
                       onSubmit={this.handleSubmit}
                     />

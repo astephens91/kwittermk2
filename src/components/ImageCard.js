@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { getUser } from "../actions";
 import UserImage from "./UserImage";
+import "../index.css";
+// import { getUserProfile } from "../actions";
+
 // import Imageuploader from "./uploadImage"
 
 class ImageCard extends Component {
@@ -11,21 +14,21 @@ class ImageCard extends Component {
   }
   render() {
     return (
-      <Card style={{ margin: "auto" }}>
-        <Card.Content style={{ margin: "auto" }}>
-          <UserImage userId={this.props.userId} seize="huge" />
-         
-        </Card.Content>
-        <Card.Content>
-        {/* <Imageuploader /> */}
-        </Card.Content>
-        <Card.Content>
-          <Card.Header style={{ textAlign: "center" }}>
-            {this.props.displayName}
-          </Card.Header>
-        </Card.Content>
-      </Card>
-      
+      <React.Fragment>
+        <Card className="ProfileImage" style={{ margin: "auto" }}>
+          <Card.Content style={{ margin: "auto" }}>
+            <UserImage userId={this.props.userId} seize="huge" />
+          </Card.Content>
+          <Card.Content>{/* <Imageuploader /> */}</Card.Content>
+          <Card.Content>
+            <Card.Header style={{ textAlign: "center" }}>
+              {this.props.user.username}
+              <br></br>
+             <Icon name="small black at">{this.props.user.displayName}</Icon>
+            </Card.Header>
+          </Card.Content>
+        </Card>
+      </React.Fragment>
     );
   }
 }
@@ -34,7 +37,8 @@ const mapStateToProps = state => {
   if (state.auth.login != null) {
     return {
       userId: state.auth.login.id,
-      displayName: state.users.user.displayName
+      user: state.users.user
+
     };
   } else {
     return {

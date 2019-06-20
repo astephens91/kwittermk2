@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getUser } from "../actions";
 import ImageCard from "./ImageCard";
 import moment from "moment";
+import "../index.css"
 import ImageUploader from "./uploadImage"
 
 class ProfileCard extends Component {
@@ -14,17 +15,18 @@ class ProfileCard extends Component {
   render() {
     return (
       <Card style={{ margin: "auto" }}>
-        <Card.Content>
+        <Card.Content className="ImageContainer">
           <ImageCard />
-          <Card.Meta>
+          <Card.Meta className="KweetingSince">
+          <br></br>
             Kweeting since {moment(this.props.createdAt).format("MMMM DD YYYY")
             }
           </Card.Meta>
-          <Card>
+          <Card className="FileBioContainer">
             <Card.Content>
               <ImageUploader />
             </Card.Content>
-            <Card.Content>
+            <Card.Content className="BioContainer">
               <Card.Header as="h3">Bio:</Card.Header>
               <Card.Description className="bioDetails">
                 {this.props.about || "No bio provided!"}
