@@ -12,9 +12,16 @@ import { connect } from "react-redux";
 
 
 class UserProfile extends Component {
-  componentDidMount(){
-    this.props.getMessages()
+  
+  forceUpdateHandler(){
+    this.forceUpdate();
+  };
+
+  componentWillUpdate(nextProps){
+    if(this.props.messages !== nextProps.messages)
+    {this.forceUpdateHandler()}
   }
+
   render() {
     return (
       <React.Fragment>
@@ -29,11 +36,12 @@ class UserProfile extends Component {
                 <UpdateProfileModal />
                 <DeleteUser />
               </Card>
-              <WriteKweet />
+              
             </Grid.Column>
             <Grid.Column floated="right" width={10}>
               <Segment>
                 <ProfileFeedContainer />
+                <WriteKweet />
                 <Feed messages={this.props.messages} />
               </Segment>{" "}
             </Grid.Column>

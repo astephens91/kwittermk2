@@ -4,6 +4,9 @@ import { store } from "../index";
 // const url = domain + "/users/picture";
 export const UPLOAD_IMAGE_SUCCESS = "UPLOAD_IMAGE_SUCCESS";
 export const UPLOAD_IMAGE_FAILURE = "UPLOAD_IMAGE_FAILURE";
+export const GET_IMAGE = "GET_IMAGE";
+export const GET_IMAGE_LOCATION_SUCCESS = "GET_IMAGE_LOCATION_SUCCESS"
+export const GET_IMAGE_LOCATION_FAIL = "GET_IMAGE_LOCATION_FAILT"
 
 
 export const uploadImage = imageData => dispatch => {
@@ -24,31 +27,45 @@ export const uploadImage = imageData => dispatch => {
     })
       .then(result => {
         console.log(result);
+        
+        window.location.reload()
         return result
       })
       
-      .then(result => {
+      .then(() => {
       const url2 = domain + "/users/"
-      fetch(url2 + imageData.id + "/picture", {
+      fetch(url2 + userId + "/picture", {
+        method: "GET",
         headers: {
-        "Authorization": "Bearer " + token
+        "Authorization": "Bearer " + token,
+        "Content-Type": "multipart/form-data"
       }
     }).then(res => {
       if(res.status === 404){
       return store.dispatch({
         type: UPLOAD_IMAGE_FAILURE,
-        payload: {picture:ostrichAvatar}
+        payload: {pictureLocation:ostrichAvatar}
       })
+     
     } else{
           return store.dispatch({
             type:UPLOAD_IMAGE_SUCCESS,
-            payload: {picture: res.url}
+            payload: {pictureLocation: res.url}
           })
       }
     })
       
     })
     .catch(er => console.log(er))
+  }
+
+  export const getImage = imageData => dispatch =>{
+    fetch(`${domain}/users/${this.props.userId}/picture`).then(response => {
+      if (response.ok && response.status !== 404) {
+        this.setState({
+          src: `${domain}/users/${this.props.userId}/picture`
+        });
+      }})
   }
 
     
