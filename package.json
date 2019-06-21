@@ -2,6 +2,7 @@
   "name": "kwitter",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://astephens91.gitlab.io/kwittermk2",
   "dependencies": {
     "connected-react-router": "^6.3.1",
     "history": "^4.7.2",
