@@ -6,7 +6,7 @@
   "dependencies": {
     "connected-react-router": "^6.3.1",
     "history": "^4.7.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-infinite-scroll-component": "^4.5.2",
